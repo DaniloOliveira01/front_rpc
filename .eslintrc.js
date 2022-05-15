@@ -31,4 +31,5 @@
     "space-before-function-paren": "off",
     "react/prop-types": "off"
   }
+  
 }
