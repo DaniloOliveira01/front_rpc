@@ -1,14 +1,15 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { HomeLayout } from '../template/Home'
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <>
       <Head>
-        <title>Create Next App</title>
+        <title>RPCINE</title>
       </Head>
-      <h1>Hello World!</h1>
-    </div>
+      <HomeLayout />
+    </>
   )
 }
 
