@@ -1,14 +1,10 @@
-import moment from 'moment';
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 import { Cards } from '../../components/Cards'
 import { Header } from '../../components/Header'
 import { api } from '../../services/api'
-import { Container } from './styles';
 
 interface ITypeData {
-  data: {
-    data: string
-  }
+  data: string
 
   programmeParse: ITypeProgramme[]
 }
@@ -22,26 +18,31 @@ export interface ITypeProgramme {
 }
 
 export const HomeLayout = () => {
-  const [data, setData] = useState<ITypeData>();
-  
+  const [data, setData] = useState<ITypeData>()
+  const [url, setUrl] = useState('')
+  const [onLoadingUrl, setOnLoadingUrl] = useState(false)
+
+  async function getProgrammers() {
+    setOnLoadingUrl(true)
+    const now = new Date().toLocaleDateString().split('/')
+    const formateData = `${now[2]}-${now[1]}-${now[0]}`
+    await api
+      .get(`/getRPCProgramme/${url ? url : formateData}`)
+      .then(response => setData(response.data))
+      .catch(error => console.log(error))
+    setOnLoadingUrl(false)
+  }
+
   useEffect(() => {
-    const now = new Date().toLocaleDateString()
-    const formated = now.split("/") 
+    getProgrammers()
+  }, [url])
 
-    console.log(formated)
+  if (!data || onLoadingUrl) return 'loading'
 
-    api.get(`/getRPCProgramme/${formated[0]}-${formated[1]}-${formated[2]}`).then((response) => setData(response.data))
-  }, [])
-  if(!data) return 'loading'
-  
   return (
     <>
-      <Header 
-        date={data.data}
-      />
-      <Cards 
-        infos={data.programmeParse}
-      />
+      <Header date={data.data} setUrl={setUrl} />
+      <Cards infos={data.programmeParse} />
     </>
   )
 }
