@@ -65,13 +65,14 @@ export const NextProgramme = styled.section`
   }
 
   @media (max-width: 768px) {
-    width: 390px;
+    width: 100%;
     padding: 20px;
     align-items: center;
     gap: 20px;
   }
 
   @media (max-width: 400px) {
-    width: 300px;
+    width: 100%;
+    margin-left: 20px;
   }
 `

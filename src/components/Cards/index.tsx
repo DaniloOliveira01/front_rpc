@@ -8,6 +8,7 @@ interface ITypeCard {
 }
 
 export const Cards = ({ infos }: ITypeCard) => {
+
   function handleActiveProgram(
     title: string,
     startTime: string,
@@ -30,47 +31,48 @@ export const Cards = ({ infos }: ITypeCard) => {
     return false
   }
 
-  function getTimeBrasiliaTimeZone(time: string) {
+  function getTimeBrasil(time: string) {
     return moment(moment().local().toISOString().slice(0, 10) + ' ' + time)
       .local()
-      .format('HH:mm')
+      .format('H:mm')
   }
 
   return (
     <Container>
-      {infos.map((entries, index) => (
-        <NextProgramme key={index}>
-          <div className="programme">
-            <span>
-              {handleActiveProgram(
-                entries.title,
-                entries.time_start,
-                entries.time_end
-              ) ? (
-                <div>
-                  <span className="live-news">
-                    <div className="ball-red"></div>Ao vivo:
-                  </span>
-                </div>
-              ) : (
-                ''
-              )}{' '}
-              {entries.title} - Das{' '}
-              {getTimeBrasiliaTimeZone(entries.time_start)} ás{' '}
-              {getTimeBrasiliaTimeZone(entries.time_end)}
-            </span>
-          </div>
+      {infos &&
+        infos.map((entries, index) => (
+          <NextProgramme key={index}>
+            <div className="programme">
+              <span>
+                {handleActiveProgram(
+                  entries.title,
+                  entries.time_start,
+                  entries.time_end
+                ) ? (
+                  <div>
+                    <span className="live-news">
+                      <div className="ball-red"></div>Ao vivo:
+                    </span>
+                  </div>
+                ) : (
+                  ''
+                )}{' '}
+                {entries.title} - Das{' '}
+                {getTimeBrasil(entries.time_start)} ás{' '}
+                {getTimeBrasil(entries.time_end)}
+              </span>
+            </div>
 
-          <div className='image-programme'>
-            <Image src={entries.URL_IMG} width={90} height={80} />
-          </div>
+            <div className="image-programme">
+              <Image src={entries.URL_IMG} width={90} height={80} />
+            </div>
 
-          <div className="description">
-            <span>Descrição:</span>
-            <p>{entries.description}</p>
-          </div>
-        </NextProgramme>
-      ))}
+            <div className="description">
+              <span>Descrição:</span>
+              <p>{entries.description}</p>
+            </div>
+          </NextProgramme>
+        ))}
     </Container>
   )
 }
