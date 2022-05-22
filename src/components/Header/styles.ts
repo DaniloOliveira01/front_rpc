@@ -40,7 +40,7 @@ export const Container = styled.header`
     }
   }
 
-  @media (max-width: 480px) {
-    width: 400px;
+  @media (max-width: 400px) {
+    width: 500px;
   }
 `

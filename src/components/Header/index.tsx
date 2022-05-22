@@ -1,19 +1,32 @@
 import { Container } from './styles'
 import Image from 'next/image'
+import { Dispatch, SetStateAction } from 'react'
 
 interface ITypeHeader {
   date: string
+  setUrl: Dispatch<SetStateAction<string>>
 }
 
-export const Header = ({ date }: ITypeHeader) => {
-  const newDate = new Date(date).toLocaleDateString()
+export const Header = ({ date, setUrl }: ITypeHeader) => {
+  const newDate = new Date(date).toLocaleDateString('pt-BR')
+
+  async function handlePage(nextPage: boolean) {
+    const newNow = new Date(date)
+    if (nextPage) newNow.setDate(newNow.getDate() + 1)
+    if (!nextPage) newNow.setDate(newNow.getDate() - 1)
+
+    const formated = newNow.toLocaleDateString().split('/')
+    const formateDate = `${formated[2]}-${formated[1]}-${formated[0]}`
+    console.log(formateDate)
+    setUrl(formateDate)
+  }
 
   return (
     <Container>
       <div>
-        <button>Anterior</button>
+        <button onClick={() => handlePage(false)}>Anterior</button>
 
-        <div className='logo-date'>
+        <div className="logo-date">
           <Image
             src={'/images/LogoRPC.png'}
             alt="logo da rpc"
@@ -23,7 +36,7 @@ export const Header = ({ date }: ITypeHeader) => {
           <span>{newDate}</span>
         </div>
 
-        <button>Próximo</button>
+        <button onClick={() => handlePage(true)}>Próximo</button>
       </div>
     </Container>
   )
