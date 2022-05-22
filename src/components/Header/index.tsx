@@ -1,37 +1,30 @@
-import { Container, MenuMobile } from './styles'
-import { IoTvSharp, IoMenuSharp } from 'react-icons/io5'
+import { Container } from './styles'
+import Image from 'next/image'
 
-import { useRouter } from 'next/router'
-import Link from 'next/link'
+interface ITypeHeader {
+  date: string
+}
 
-export const Header = () => {
-  const { asPath } = useRouter()
+export const Header = ({ date }: ITypeHeader) => {
+  const newDate = new Date(date).toLocaleDateString()
 
   return (
     <Container>
       <div>
-        <h2>
-          <IoTvSharp /> rpc<span>tv</span>
-        </h2>
+        <button>Anterior</button>
+
+        <div className='logo-date'>
+          <Image
+            src={'/images/LogoRPC.png'}
+            alt="logo da rpc"
+            width={350}
+            height={200}
+          />
+          <span>{newDate}</span>
+        </div>
+
+        <button>Próximo</button>
       </div>
-
-      <nav>
-        <ul>
-          <li className={asPath === '/' ? 'active' : ''}>
-            <Link href={'/'}>Home</Link>
-          </li>
-          <li className={asPath === '/' ? 'active' : ''}>
-            <Link href={'/programming'}>Progamming</Link>
-          </li>
-          <li className={asPath === '/' ? 'active' : ''}>
-            <Link href={'/about'}>About</Link>
-          </li>
-        </ul>
-      </nav>
-
-      <MenuMobile>
-        <IoMenuSharp size={45} />
-      </MenuMobile>
     </Container>
   )
 }
