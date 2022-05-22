@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: 'https://rpc-project-production.up.railway.app'
+  baseURL: 'https://holistic-toothpaste-production.up.railway.app/'
 })
