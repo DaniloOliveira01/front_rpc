@@ -15,7 +15,7 @@ export const Header = ({ date, setUrl }: ITypeHeader) => {
     if (nextPage) newNow.setDate(newNow.getDate() + 1)
     if (!nextPage) newNow.setDate(newNow.getDate() - 1)
 
-    const formated = newNow.toLocaleDateString().split('/')
+    const formated = newNow.toLocaleDateString('en-US').split('/')
     const formateDate = `${formated[2]}-${formated[0]}-${formated[1]}`
     console.log(formateDate)
     setUrl(formateDate)
