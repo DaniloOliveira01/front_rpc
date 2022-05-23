@@ -1,11 +1,7 @@
-import { Container } from './styles'
 import Image from 'next/image'
-import { Dispatch, SetStateAction } from 'react'
 
-interface ITypeHeader {
-  date: string
-  setUrl: Dispatch<SetStateAction<string>>
-}
+import { Container } from './styles'
+import { ITypeHeader } from '../../@types'
 
 export const Header = ({ date, setUrl }: ITypeHeader) => {
   const newDate = new Date(date).toLocaleDateString('pt-BR')

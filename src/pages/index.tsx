@@ -1,22 +1,13 @@
-import { NextPage } from 'next'
-import { useEffect, useState } from 'react'
 import { Cards } from '../components/Cards'
 import { Header } from '../components/Header'
+
+import { 
+  useEffect, 
+  useState 
+} from 'react'
+
 import { api } from '../services/api'
-
-interface ITypeData {
-  data: string
-
-  programmeParse: ITypeProgramme[]
-}
-
-export interface ITypeProgramme {
-  title: string
-  description: string
-  time_start: string
-  time_end: string
-  URL_IMG: string
-}
+import { ITypeData } from '../@types'
 
 function Home () {
   const [data, setData] = useState<ITypeData>()

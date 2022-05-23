@@ -29,7 +29,7 @@ export const NextProgramme = styled.section`
       font-weight: 600;
     }
 
-    .live-news {
+    .live {
       display: flex;
       width: 130px;
       color: red;

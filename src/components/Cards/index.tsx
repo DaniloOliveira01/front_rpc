@@ -1,40 +1,32 @@
-import { ITypeProgramme } from '../../template/Home'
-import { Container, NextProgramme } from './styles'
+import { 
+  Container, 
+  NextProgramme 
+} from './styles'
+
+import { ITypeCard } from '../../@types'
 import Image from 'next/image'
 import moment from 'moment'
 
-interface ITypeCard {
-  infos: ITypeProgramme[]
-}
-
 export const Cards = ({ infos }: ITypeCard) => {
-
   function handleActiveProgram(
     title: string,
-    startTime: string,
-    endTime: string
+    time_start: string,
+    time_end: string
   ) {
-    const localTimeNow = moment().local()
-    const startTimeFormatted = moment(
-      localTimeNow.toISOString().slice(0, 10) + ' ' + startTime
+    const localTime = moment().local()
+    const timeStartFormatted = moment(
+      localTime.toISOString().slice(0, 10) + ' ' + time_start
     ).local()
-    const endTimeFormatted = moment(
-      localTimeNow.toISOString().slice(0, 10) + ' ' + endTime
+    const timeEndFormatted = moment(
+      localTime.toISOString().slice(0, 10) + ' ' + time_end
     ).local()
 
     if (
-      localTimeNow.isBetween(startTimeFormatted, endTimeFormatted, null, '[]')
+      localTime.isBetween(timeStartFormatted, timeEndFormatted)
     ) {
       return true
     }
-
     return false
-  }
-
-  function getTimeBrasil(time: string) {
-    return moment(moment().local().toISOString().slice(0, 10) + ' ' + time)
-      .local()
-      .format('H:mm')
   }
 
   return (
@@ -49,17 +41,13 @@ export const Cards = ({ infos }: ITypeCard) => {
                   entries.time_start,
                   entries.time_end
                 ) ? (
-                  <div>
-                    <span className="live-news">
-                      <div className="ball-red"></div>Ao vivo:
-                    </span>
+                  <div className='live'>
+                    <span><div className='ball-red'></div> Ao vivo:</span>
                   </div>
                 ) : (
                   ''
                 )}{' '}
-                {entries.title} - Das{' '}
-                {getTimeBrasil(entries.time_start)} ás{' '}
-                {getTimeBrasil(entries.time_end)}
+                {entries.title} - Das {entries.time_start} ás {entries.time_end}
               </span>
             </div>
 
