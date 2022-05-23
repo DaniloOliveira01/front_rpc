@@ -26,7 +26,7 @@ function Home () {
   async function getProgrammers() {
     setOnLoadingUrl(true)
     const now = new Date().toLocaleDateString().split('/')
-    const formateData = `${now[2]}-${now[1]}-${now[0]}`
+    const formateData = `${now[2]}-${now[0]}-${now[1]}`
     await api
       .get(`/getRPCProgramme/${url ? url : formateData}`)
       .then(response => setData(response.data))
