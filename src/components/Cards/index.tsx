@@ -1,9 +1,6 @@
-import { 
-  Container, 
-  NextProgramme 
-} from './styles'
-
+import { Container, NextProgramme } from './styles'
 import { ITypeCard } from '../../@types'
+
 import Image from 'next/image'
 import moment from 'moment'
 
@@ -21,9 +18,7 @@ export const Cards = ({ infos }: ITypeCard) => {
       localTime.toISOString().slice(0, 10) + ' ' + time_end
     ).local()
 
-    if (
-      localTime.isBetween(timeStartFormatted, timeEndFormatted)
-    ) {
+    if (localTime.isBetween(timeStartFormatted, timeEndFormatted)) {
       return true
     }
     return false
@@ -41,8 +36,10 @@ export const Cards = ({ infos }: ITypeCard) => {
                   entries.time_start,
                   entries.time_end
                 ) ? (
-                  <div className='live'>
-                    <span><div className='ball-red'></div> Ao vivo:</span>
+                  <div className="live">
+                    <span>
+                      <div className="ball-red"></div> Ao vivo:
+                    </span>
                   </div>
                 ) : (
                   ''

@@ -1,15 +1,10 @@
-import { Cards } from '../components/Cards'
-import { Header } from '../components/Header'
-
-import { 
-  useEffect, 
-  useState 
-} from 'react'
-
-import { api } from '../services/api'
+import { Cards, Header } from '../components'
+import { useEffect, useState } from 'react'
 import { ITypeData } from '../@types'
 
-function Home () {
+import { api } from '../services/api'
+
+function Home() {
   const [data, setData] = useState<ITypeData>()
   const [url, setUrl] = useState('')
   const [onLoadingUrl, setOnLoadingUrl] = useState(false)

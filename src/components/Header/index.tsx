@@ -1,7 +1,6 @@
-import Image from 'next/image'
-
 import { Container } from './styles'
 import { ITypeHeader } from '../../@types'
+import Image from 'next/image'
 
 export const Header = ({ date, setUrl }: ITypeHeader) => {
   const newDate = new Date(date).toLocaleDateString('pt-BR')
