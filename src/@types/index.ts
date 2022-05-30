@@ -17,7 +17,6 @@ export interface ITypeCard {
 
 export interface ITypeData {
   data: string
-
   programmeParse: ITypeProgramme[]
 }
 

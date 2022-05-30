@@ -31,7 +31,7 @@ export const NextProgramme = styled.section`
 
     .live {
       display: flex;
-      width: 130px;
+      width: 100px;
       color: red;
 
       .ball-red {
@@ -39,12 +39,12 @@ export const NextProgramme = styled.section`
         height: 18px;
         border-radius: 50%;
         background-color: red;
+        margin-right: 5px;
       }
     }
   }
 
   .image-programme {
-    background: transparent;
     box-shadow: 2px 3px 4px rgba(0,0,0,0.5);
     margin-bottom: 10px;
   }

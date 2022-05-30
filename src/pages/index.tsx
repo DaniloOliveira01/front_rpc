@@ -24,7 +24,7 @@ function Home() {
     getProgrammers()
   }, [url])
 
-  if (!data || onLoadingUrl) return 'loading'
+  if (!data || onLoadingUrl) return 'Loading...'
 
   return (
     <>
