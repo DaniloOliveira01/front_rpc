@@ -5,10 +5,8 @@ import Image from 'next/image'
 import moment from 'moment'
 
 export const Cards = ({ infos }: ITypeCard) => {
-  console.log(infos)
-
   function handleActiveProgram(
-    title: string,
+    _title: string,
     time_start: string,
     time_end: string
   ) {

@@ -11,10 +11,10 @@ function Home() {
 
   async function getProgrammers() {
     setOnLoadingUrl(true)
-    const now = new Date().toLocaleDateString('en-US').split('/')
-    const formateData = `${now[2]}-${now[0]}-${now[1]}`
+    const [mes, dia, ano] = new Date().toLocaleDateString('en-US').split('/')
+    const formateDate = `${ano}-${mes}-${dia}`
     await api
-      .get(`/getRPCProgramme/${url ? url : formateData}`)
+      .get(`/getRPCProgramme/${url ? url : formateDate}`)
       .then(response => setData(response.data))
       .catch(error => console.log(error))
     setOnLoadingUrl(false)
