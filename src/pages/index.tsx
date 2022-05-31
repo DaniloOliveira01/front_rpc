@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { ITypeData } from '../@types'
 
 import { api } from '../services/api'
+import { Loading } from '../template/Loading'
 
 function Home() {
   const [data, setData] = useState<ITypeData>()
@@ -24,7 +25,7 @@ function Home() {
     getProgrammers()
   }, [url])
 
-  if (!data || onLoadingUrl) return 'Loading...'
+  if (!data || onLoadingUrl) return <Loading />
 
   return (
     <>
